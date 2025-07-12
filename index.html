@@ -121,16 +121,38 @@
       transform: translateY(0);
     }
 
-    .services ul {
-      list-style: none;
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      margin-top: 1rem;
-      color: var(--accent-color);
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
+   .services {
+  padding: 2rem;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+}
+
+.service-pill {
+  background-color: #f2ddc6;
+  color: #333;
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.service-pill:hover {
+  background-color: #e5cba8;
+  transform: scale(1.05);
+}
 
     .portfolio-items {
       display: grid;
@@ -294,21 +316,22 @@
   </div>
 
   <header>
-    <div class="logo">KIRILL</div>
+    <div class="logo">CHICHA</div>
     <h1>Привет, я Кирилл</h1>
     <p>Твои идеи — мои решения: сайты и мини-приложения, которые делают бизнес проще</p>
     <a class="btn" href="https://t.me/yourtelegram" target="_blank" rel="noopener noreferrer">Связаться в Telegram</a>
   </header>
 
-  <section class="services">
-    <h2>Что я делаю</h2>
-    <ul>
-      <li>✅ Telegram mini-приложения</li>
-      <li>✅ Лендинги и сайты</li>
-      <li>✅ Курсы и автоворонки</li>
-      <li>✅ Поддержка и доработка</li>
-    </ul>
-  </section>
+<section class="services">
+  <h2>Что я делаю</h2>
+  <div class="services-grid">
+    <div class="service-pill">Приложения в телеграмм "mini app"</div>
+    <div class="service-pill">Сайты визитки</div>
+    <div class="service-pill">Приложения о продукте-курсе</div>
+    <div class="service-pill">Доработка или переделаю приложения</div>
+    <div class="service-pill">UI/UX дизайн интерфейсов</div> <!-- Пятая, можешь заменить -->
+  </div>
+</section>
 
   <section class="portfolio">
     <h2>Примеры работ</h2>
