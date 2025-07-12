@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Кирилл | Telegram & Web разработка</title>
+  <style>
+    :root {
+      --bg-color: #F2DDC6;
+      --accent-color: #000;
+      --highlight: #caa574;
+      --btn-bg: #000;
+      --btn-hover-bg: #caa574;
+      --text-color: #000;
+      --form-bg: #fff;
+      --input-bg: #fff;
+      --input-border: #ccc;
+    }
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --accent-color: #eee;
+      --highlight: #ffb74d;
+      --btn-bg: #333;
+      --btn-hover-bg: #ffb74d;
+      --text-color: #eee;
+      --form-bg: #222;
+      --input-bg: #333;
+      --input-border: #555;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color 0.4s, color 0.4s;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    /* Логотип с анимацией */
+    .logo {
+      font-weight: 900;
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent-color);
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: fadeInDown 1s forwards;
+      user-select: none;
+      font-family: 'Courier New', Courier, monospace;
+      letter-spacing: 4px;
+    }
+
+    @keyframes fadeInDown {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+
+    header p {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.7rem;
+      background-color: var(--btn-bg);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+      display: inline-block;
+    }
+
+    .btn:hover,
+    .btn:focus {
+      background-color: var(--btn-hover-bg);
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .services ul {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 1rem;
+      color: var(--accent-color);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .portfolio-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .project {
+      background: var(--form-bg);
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .project:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .project img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+
+    footer.contact {
+      text-align: center;
+      padding: 3rem 2rem;
+      background-color: #e2cdb3;
+      color: var(--accent-color);
+      user-select: none;
+    }
+
+    footer.contact a {
+      color: var(--accent-color);
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    /* Тёмный футер */
+    [data-theme="dark"] footer.contact {
+      background-color: #2a2a2a;
+      color: var(--highlight);
+    }
+
+    /* Переключатель темы */
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--btn-bg);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease;
+      user-select: none;
+      z-index: 999;
+    }
+
+    .theme-toggle:hover {
+      background: var(--btn-hover-bg);
+    }
+
+    .theme-toggle svg {
+      fill: #fff;
+      width: 22px;
+      height: 22px;
+    }
+
+    /* Форма обратной связи */
+    form {
+      background: var(--form-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: 2rem auto 0 auto;
+      color: var(--accent-color);
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.25rem;
+      border-radius: 8px;
+      border: 1.5px solid var(--input-border);
+      background: var(--input-bg);
+      color: var(--text-color);
+      font-size: 1rem;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      border-color: var(--highlight);
+      outline: none;
+    }
+
+    form button[type='submit'] {
+      background-color: var(--btn-bg);
+      color: #fff;
+      border: none;
+      padding: 0.75rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    form button[type='submit']:hover {
+      background-color: var(--btn-hover-bg);
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    /* Ошибка валидации */
+    .error {
+      border-color: #e74c3c !important;
+    }
+
+    /* Адаптив */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      .services ul {
+        grid-template-columns: 1fr;
+      }
+      .portfolio-items {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="theme-toggle" id="themeToggle" title="Переключить тему">
+    <!-- Иконка Солнца/Луны -->
+    <svg id="themeIcon" viewBox="0 0 24 24">
+      <path d="M12 3v1M16.24 4.76l-.7.7M21 12h-1M16.24 19.24l-.7-.7M12 21v-1M7.76 19.24l.7-.7M3 12h1M7.76 4.76l.7.7M12 7a5 5 0 100 10 5 5 0 000-10z"></path>
+    </svg>
+  </div>
+
+  <header>
+    <div class="logo">KIRILL</div>
+    <h1>Привет, я Кирилл</h1>
+    <p>Твои идеи — мои решения: сайты и мини-приложения, которые делают бизнес проще</p>
+    <a class="btn" href="https://t.me/yourtelegram" target="_blank" rel="noopener noreferrer">Связаться в Telegram</a>
+  </header>
+
+  <section class="services">
+    <h2>Что я делаю</h2>
+    <ul>
+      <li>✅ Telegram mini-приложения</li>
+      <li>✅ Лендинги и сайты</li>
+      <li>✅ Курсы и автоворонки</li>
+      <li>✅ Поддержка и доработка</li>
+    </ul>
+  </section>
+
+  <section class="portfolio">
+    <h2>Примеры работ</h2>
+    <div class="portfolio-items">
+      <div class="project" tabindex="0" aria-label="Telegram-приложение для онлайн-записи">
+        <img src="https://via.placeholder.com/400x200" alt="Telegram-приложение для онлайн-записи" />
+        <p>Telegram-приложение для онлайн-записи</p>
+      </div>
+      <div class="project" tabindex="0" aria-label="Лендинг для курса по SMM">
+        <img src="https://via.placeholder.com/400x200" alt="Лендинг для курса по SMM" />
+        <p>Лендинг для курса по SMM</p>
+      </div>
+      <div class="project" tabindex="0" aria-label="Сайт-визитка для эксперта">
+        <img src="https://via.placeholder.com/400x200" alt="Сайт-визитка для эксперта" />
+        <p>Сайт-визитка для эксперта</p>
+      </div>
+      <div class="project" tabindex="0" aria-label="Мини-бот для подбора тарифа">
+        <img src="https://via.placeholder.com/400x200" alt="Мини-бот для подбора тарифа" />
+        <p>Мини-бот для подбора тарифа</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>Связаться со мной</h2>
+    <form id="contactForm" novalidate>
+      <label for="name">Имя</label>
+      <input type="text" id="name" name="name" placeholder="Ваше имя" required />
+      
+      <label for="message">Сообщение</label>
+      <textarea id="message" name="message" rows="5" placeholder="Опишите задачу" required></textarea>
+      
+      <button type="submit">Отправить</button>
+    </form>
+  </section>
+
+  <footer class="contact">
+    <p>📩 Готов к сотрудничеству — <a href="https://t.me/yourtelegram" target="_blank" rel="noopener noreferrer">написать в Telegram</a></p>
+  </footer>
+
+  <script>
+    // Плавное появление секций
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {threshold: 0.1});
+    sections.forEach(section => observer.observe(section));
+
+    // Тема (сохранение в localStorage)
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+
+    function setTheme(theme) {
+      if(theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        // Луна иконка
+        themeIcon.innerHTML = '<path d=\"M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z\"></path>';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        // Солнце иконка
+        themeIcon.innerHTML = '<path d=\"M12 3v1M16.24 4.76l-.7.7M21 12h-1M16.24 19.24l-.7-.7M12 21v-1M7.76 19.24l.7-.7M3 12h1M7.76 4.76l.7.7M12 7a5 5 0 100 10 5 5 0 000-10z\"></path>';
+      }
+      localStorage.setItem('theme', theme);
+    }
+
+    // Инициализация темы
+    let savedTheme = localStorage.getItem('theme');
+    if(savedTheme === 'dark') {
+      setTheme('dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      let currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        setTheme('light');
+      } else {
+        setTheme('dark');
+      }
+    });
+
+    // Валидация формы
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const nameInput = form.elements['name'];
+      const messageInput = form.elements['message'];
+      let valid = true;
+
+      [nameInput, messageInput].forEach(input => {
+        if(!input.value.trim()) {
+          input.classList.add('error');
+          valid = false;
+        } else {
+          input.classList.remove('error');
+        }
+      });
+
+      if(valid) {
+        alert('Спасибо за сообщение! Я скоро свяжусь с вами.');
+        form.reset();
+      } else {
+        alert('Пожалуйста, заполните все поля.');
+      }
+    });
+  </script>
+</body>
+</html>
