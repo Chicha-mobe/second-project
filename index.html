@@ -294,7 +294,7 @@
   </div>
 
   <header>
-    <div class="logo">KIRILL</div>
+    <div class="logo">Chicha</div>
     <h1>Привет, я Кирилл</h1>
     <p>Твои идеи — мои решения: сайты и мини-приложения, которые делают бизнес проще</p>
     <a class="btn" href="https://t.me/yourtelegram" target="_blank" rel="noopener noreferrer">Связаться в Telegram</a>
@@ -346,7 +346,7 @@
   </section>
 
   <footer class="contact">
-    <p>📩 Готов к сотрудничеству — <a href="https://t.me/yourtelegram" target="_blank" rel="noopener noreferrer">написать в Telegram</a></p>
+    <p>Готов выполнить работу любой сложности — <a href="https://t.me/yourtelegram" target="_blank" rel="noopener noreferrer">написать в Telegram</a></p>
   </footer>
 
   <script>
@@ -394,30 +394,45 @@
     });
 
     // Валидация формы
-    const form = document.getElementById('contactForm');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
+<section class="code-block">
+  <div class="code-header">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+    <span class="filename">form.js</span>
+  </div>
 
-      const nameInput = form.elements['name'];
-      const messageInput = form.elements['message'];
-      let valid = true;
+  <form id="appForm" class="code-form">
+    <label>
+      Имя:
+      <input type="text" name="name" required minlength="2" />
+    </label>
+    <label>
+      Email:
+      <input type="email" name="email" required />
+    </label>
+    <button type="submit">Отправить</button>
+    <p id="formMessage" class="form-message"></p>
+  </form>
+</section>
+ 
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('appForm');
+  const message = document.getElementById('formMessage');
 
-      [nameInput, messageInput].forEach(input => {
-        if(!input.value.trim()) {
-          input.classList.add('error');
-          valid = false;
-        } else {
-          input.classList.remove('error');
-        }
-      });
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-      if(valid) {
-        alert('Спасибо за сообщение! Я скоро свяжусь с вами.');
-        form.reset();
-      } else {
-        alert('Пожалуйста, заполните все поля.');
-      }
-    });
-  </script>
+    if (!form.checkValidity()) {
+      message.textContent = 'Пожалуйста, заполните все поля корректно.';
+      return;
+    }
+
+    message.style.color = 'lightgreen';
+    message.textContent = 'Форма успешно отправлена!';
+    form.reset();
+  });
+});
+
 </body>
 </html>
