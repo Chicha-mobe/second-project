@@ -236,59 +236,59 @@
     }
 
     /* Форма обратной связи */
-    form {
-      background: var(--form-bg);
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      max-width: 500px;
-      margin: 2rem auto 0 auto;
-      color: var(--accent-color);
-    }
+    .code-block {
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 2rem 0;
+  font-family: 'Courier New', monospace;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
 
-    form label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-      font-size: 1rem;
-    }
+.code-header {
+  background-color: #2d2d2d;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
 
-    form input,
-    form textarea {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      margin-bottom: 1.25rem;
-      border-radius: 8px;
-      border: 1.5px solid var(--input-border);
-      background: var(--input-bg);
-      color: var(--text-color);
-      font-size: 1rem;
-      resize: vertical;
-      transition: border-color 0.3s ease;
-    }
+.code-header .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
 
-    form input:focus,
-    form textarea:focus {
-      border-color: var(--highlight);
-      outline: none;
-    }
+.code-header .red {
+  background-color: #ff5f56;
+}
 
-    form button[type='submit'] {
-      background-color: var(--btn-bg);
-      color: #fff;
-      border: none;
-      padding: 0.75rem 2rem;
-      font-size: 1.1rem;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
+.code-header .yellow {
+  background-color: #ffbd2e;
+}
 
-    form button[type='submit']:hover {
-      background-color: var(--btn-hover-bg);
-      transform: scale(1.05);
-      outline: none;
-    }
+.code-header .green {
+  background-color: #27c93f;
+}
+
+.code-header .filename {
+  margin-left: auto;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.code-content {
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.code-content pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 
     /* Ошибка валидации */
     .error {
@@ -358,19 +358,28 @@
       </div>
     </div>
   </section>
+<section class="code-block">
+  <div class="code-header">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+    <span class="filename">contact.js</span>
+  </div>
+  <div class="code-content">
+<pre><code>
+&lt;form id="contactForm"&gt;
+  &lt;label for="name"&gt;Имя&lt;/label&gt;
+  &lt;input type="text" id="name" name="name" placeholder="Ваше имя" required /&gt;
 
-  <section class="contact">
-    <h2>Связаться со мной</h2>
-    <form id="contactForm" novalidate>
-      <label for="name">Имя</label>
-      <input type="text" id="name" name="name" placeholder="Ваше имя" required />
-      
-      <label for="message">Сообщение</label>
-      <textarea id="message" name="message" rows="5" placeholder="Опишите задачу" required></textarea>
-      
-      <button type="submit">Отправить</button>
-    </form>
-  </section>
+  &lt;label for="message"&gt;Сообщение&lt;/label&gt;
+  &lt;textarea id="message" name="message" rows="5" placeholder="Опишите задачу" required&gt;&lt;/textarea&gt;
+
+  &lt;button type="submit"&gt;Отправить&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+  </div>
+</section>
+
 
   <footer class="contact">
     <p>📩 Готов к сотрудничеству — <a href="https://t.me/yourtelegram" target="_blank" rel="noopener noreferrer">написать в Telegram</a></p>
