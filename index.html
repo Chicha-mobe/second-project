@@ -315,6 +315,47 @@
 .code-content button:hover {
   background-color: #005fa3;
 }
+<script>
+  const TOKEN = '7551886319:AAESFEAVKeaXHqUgOSrVc2p4CBkjZmRacUI'; // ВСТАВЬ СЮДА токен от BotFather
+  const CHAT_ID = '@Chicha207';  // ВСТАВЬ СЮДА свой Telegram ID
+  const API = `https://api.telegram.org/bot${7551886319:AAESFEAVKeaXHqUgOSrVc2p4CBkjZmRacUI}/sendMessage`;
+
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !message) {
+      alert("Пожалуйста, заполните все поля.");
+      return;
+    }
+
+    const text = `📩 Новая заявка с сайта:\n\n👤 Имя: ${name}\n📝 Сообщение: ${message}`;
+
+    fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: text,
+        parse_mode: 'HTML'
+      })
+    })
+    .then(res => {
+      if (res.ok) {
+        document.getElementById('formStatus').textContent = "✅ Заявка отправлена!";
+        document.getElementById('contactForm').reset();
+      } else {
+        alert("Ошибка при отправке!");
+      }
+    })
+    .catch(err => {
+      console.error("Ошибка:", err);
+      alert("Что-то пошло не так.");
+    });
+  });
+</script>
 
 
     /* Ошибка валидации */
@@ -392,15 +433,16 @@
     <span class="dot green"></span>
     <span class="filename">contact.js</span>
   </div>
-  <form id="contactForm" class="code-content" novalidate>
-    <label for="name">Имя</label>
-    <input type="text" id="name" name="name" placeholder="Как можно обращаться" required />
+ <form id="contactForm" class="code-content" novalidate>
+  <label for="name">Имя и telegramm id</label>
+  <input type="text" id="name" name="name" placeholder="Как к вам обращаться и ваш tg id" required />
 
-    <label for="message">Сообщение</label>
-    <textarea id="message" name="message" rows="5" placeholder="Опишите задачу" required></textarea>
+  <label for="message">Сообщение</label>
+  <textarea id="message" name="message" rows="5" placeholder="Опишите задачу" required></textarea>
 
-    <button type="submit">Отправить</button>
-  </form>
+  <button type="submit">Отправить</button>
+</form>
+<div id="formStatus" style="margin-top: 1rem; color: #00ff99;"></div>
 </section>
 
 
