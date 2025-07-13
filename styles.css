@@ -132,6 +132,20 @@ section.visible {
 }
 
 .service-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2ddc6;
+  color: #333;
+  padding: 1.2rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  min-height: 70px;
+  text-align: center;
+  cursor: default;
+  user-select: none;
   flex: 1 1 0;
   min-width: 0;
   text-align: center;
