@@ -315,10 +315,21 @@ footer.contact a {
 
 @media (max-width: 600px) {
   header h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   header p {
     font-size: 1rem;
+    padding: 0 1rem;
+  }
+  .services-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .portfolio-items {
+    grid-template-columns: 1fr !important;
+  }
+  .btn {
+    width: 100%;
+    box-sizing: border-box;
   }
   .services ul {
     grid-template-columns: 1fr;
@@ -326,4 +337,10 @@ footer.contact a {
   .portfolio-items {
     grid-template-columns: 1fr;
   }
+.container {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 }
