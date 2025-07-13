@@ -316,31 +316,28 @@
   background-color: #005fa3;
 }
 
-    /* Ошибка валидации */
-    .error {
-      border-color: #e74c3c !important;
-    }
+.error {
+  border-color: #e74c3c !important;
+}
 
-    /* Адаптив */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      header p {
-        font-size: 1rem;
-      }
-      .services ul {
-        grid-template-columns: 1fr;
-      }
-      .portfolio-items {
-        grid-template-columns: 1fr;
-      }
-    }
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  header p {
+    font-size: 1rem;
+  }
+  .services ul {
+    grid-template-columns: 1fr;
+  }
+  .portfolio-items {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 </head>
 <body>
   <div class="theme-toggle" id="themeToggle" title="Переключить тему">
-    <!-- Иконка Солнца/Луны -->
     <svg id="themeIcon" viewBox="0 0 24 24">
       <path d="M12 3v1M16.24 4.76l-.7.7M21 12h-1M16.24 19.24l-.7-.7M12 21v-1M7.76 19.24l.7-.7M3 12h1M7.76 4.76l.7.7M12 7a5 5 0 100 10 5 5 0 000-10z"></path>
     </svg>
@@ -353,15 +350,15 @@
     <a class="btn" href="https://t.me/yourtelegram" target="_blank" rel="noopener noreferrer">Связаться в Telegram</a>
   </header>
 
-<section class="services">
-  <h2>Что я делаю</h2>
-  <div class="services-grid">
-    <div class="service-pill">Приложения в телеграмм "mini app"</div>
-    <div class="service-pill">Сайты визитки</div>
-    <div class="service-pill">Приложения о продукте-курсе</div>
-    <div class="service-pill">Доработка или переделаю приложения</div>
-  </div>
-</section>
+  <section class="services">
+    <h2>Что я делаю</h2>
+    <div class="services-grid">
+      <div class="service-pill">Приложения в телеграмм "mini app"</div>
+      <div class="service-pill">Сайты визитки</div>
+      <div class="service-pill">Приложения о продукте-курсе</div>
+      <div class="service-pill">Доработка или переделаю приложения</div>
+    </div>
+  </section>
 
   <section class="portfolio">
     <h2>Примеры работ</h2>
@@ -384,26 +381,25 @@
       </div>
     </div>
   </section>
-<section class="code-form">
-  <div class="code-header">
-    <span class="dot red"></span>
-    <span class="dot yellow"></span>
-    <span class="dot green"></span>
-    <span class="filename">contact.js</span>
-  </div>
- <form id="contactForm" class="code-content" novalidate>
-  <label for="name">Имя и telegramm id</label>
-  <input type="text" id="name" name="name" placeholder="Как к вам обращаться и ваш tg id" required />
 
-  <label for="message">Сообщение</label>
-  <textarea id="message" name="message" rows="5" placeholder="Опишите задачу" required></textarea>
+  <section class="code-form">
+    <div class="code-header">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+      <span class="filename">contact.js</span>
+    </div>
+    <form id="contactForm" class="code-content" novalidate>
+      <label for="name">Имя и telegramm id</label>
+      <input type="text" id="name" name="name" placeholder="Как к вам обращаться и ваш tg id" required />
 
-  <button type="submit">Отправить</button>
-</form>
-<div id="formStatus" style="margin-top: 1rem; color: #00ff99;"></div>
-</section>
+      <label for="message">Сообщение</label>
+      <textarea id="message" name="message" rows="5" placeholder="Опишите задачу" required></textarea>
 
-
+      <button type="submit">Отправить</button>
+    </form>
+    <div id="formStatus" style="margin-top: 1rem; color: #00ff99;"></div>
+  </section>
 
   <footer class="contact">
     <p>Готов выполнить работу — <a href="https://t.me/yourtelegram" target="_blank" rel="noopener noreferrer">написать в Telegram</a></p>
@@ -429,11 +425,11 @@
       if(theme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
         // Луна иконка
-        themeIcon.innerHTML = '<path d=\"M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z\"></path>';
+        themeIcon.innerHTML = '<path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>';
       } else {
         document.documentElement.removeAttribute('data-theme');
         // Солнце иконка
-        themeIcon.innerHTML = '<path d=\"M12 3v1M16.24 4.76l-.7.7M21 12h-1M16.24 19.24l-.7-.7M12 21v-1M7.76 19.24l.7-.7M3 12h1M7.76 4.76l.7.7M12 7a5 5 0 100 10 5 5 0 000-10z\"></path>';
+        themeIcon.innerHTML = '<path d="M12 3v1M16.24 4.76l-.7.7M21 12h-1M16.24 19.24l-.7-.7M12 21v-1M7.76 19.24l.7-.7M3 12h1M7.76 4.76l.7.7M12 7a5 5 0 100 10 5 5 0 000-10z"></path>';
       }
       localStorage.setItem('theme', theme);
     }
@@ -453,9 +449,7 @@
       }
     });
 
-    
-  <!-- Скрипт отправки формы в Telegram -->
-  <script>
+    // Отправка формы с валидацией и отправкой в Telegram
     const TOKEN = '7551886319:AAESFEAVKeaXHqUgOSrVc2p4CBkjZmRacUI';
     const CHAT_ID = 5362730618;
     const API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
