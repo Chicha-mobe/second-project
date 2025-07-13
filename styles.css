@@ -91,8 +91,6 @@ header p {
   transition: background-color 0.3s ease, transform 0.2s ease;
   user-select: none;
   display: inline-block;
-  max-width: 300px;
-  text-align: center;
 }
 
 .btn:hover,
@@ -147,7 +145,6 @@ section.visible {
   min-height: 70px;
   text-align: center;
   cursor: default;
-  user-select: none;
 }
 
 .service-pill:hover {
@@ -316,102 +313,30 @@ footer.contact a {
   border-color: #e74c3c !important;
 }
 
-/* --- Мобильные стили --- */
 @media (max-width: 600px) {
-  body {
-    font-size: 16px;
-  }
-
-  header {
-    min-height: auto; /* убираем 100vh, чтобы не было проблем с высотой */
-    padding: 2rem 1rem;
-  }
-
-  .logo {
-    font-size: 2.5rem;
-    letter-spacing: 2px;
-  }
-
   header h1 {
     font-size: 1.8rem;
-    margin-bottom: 0.8rem;
   }
-
   header p {
     font-size: 1rem;
-    max-width: 100%;
-    margin-bottom: 1.5rem;
     padding: 0 1rem;
   }
-
-  .btn {
-    width: 100%;
-    max-width: none;
-    padding: 0.9rem 1rem;
-    font-size: 1.1rem;
-  }
-
-  section {
-    padding: 2rem 1rem;
-    max-width: 100%;
-  }
-
   .services-grid {
     grid-template-columns: 1fr !important;
-    gap: 1rem;
   }
-
-  .service-pill {
-    min-height: 60px;
-    font-size: 1rem;
-    padding: 1rem 1.2rem;
-  }
-
   .portfolio-items {
     grid-template-columns: 1fr !important;
-    gap: 1.5rem;
   }
-
-  .project {
-    padding: 0.8rem 1rem;
+  .btn {
+    width: 100%;
+    box-sizing: border-box;
   }
-
-  footer.contact {
-    padding: 2rem 1rem;
-    font-size: 0.9rem;
+  .services ul {
+    grid-template-columns: 1fr;
   }
-
-  .code-form {
-    margin: 2rem 1rem;
-    max-width: 100%;
+  .portfolio-items {
+    grid-template-columns: 1fr;
   }
-
-  .code-content input,
-  .code-content textarea {
-    font-size: 1rem;
-  }
-
-  .theme-toggle {
-    width: 36px;
-    height: 36px;
-    top: 0.5rem;
-    right: 0.5rem;
-  }
-
-  .theme-toggle svg {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-/* Ограничение ширины изображений */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Контейнер с ограничением ширины и отключением горизонтального скролла */
 .container {
   width: 100%;
   max-width: 100vw;
