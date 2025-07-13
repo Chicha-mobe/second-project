@@ -85,38 +85,26 @@
       transform: scale(1.05);
     }
 
-    .services {
-  padding: 2rem;
-  text-align: center;
-}
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
 
-.services h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      text-align: center;
+    }
 
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-  justify-items: center;
-}
-
-.service-pill {
-  background-color: #f2ddc6;
-  color: #333;
-  padding: 1rem 1.5rem;
-  border-radius: 999px;
-  font-weight: 500;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-  cursor: default;
-}
-
-.service-pill:hover {
-  background-color: #e5cba8;
-  transform: scale(1.05);
-}
+    .service-pill {
+      background-color: #f2ddc6;
+      color: #333;
+      padding: 1rem;
+      border-radius: 999px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
 
     .portfolio-items {
       display: grid;
