@@ -51,39 +51,21 @@
       align-items: center;
       text-align: center;
       padding: 2rem;
-      position: relative;
     }
 
-    /* Логотип с анимацией */
     .logo {
       font-weight: 900;
       font-size: 3.5rem;
       margin-bottom: 1rem;
       color: var(--accent-color);
-      opacity: 0;
-      transform: translateY(-20px);
       animation: fadeInDown 1s forwards;
-      user-select: none;
       font-family: 'Courier New', Courier, monospace;
       letter-spacing: 4px;
     }
 
     @keyframes fadeInDown {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-    }
-
-    header p {
-      font-size: 1.25rem;
-      max-width: 600px;
-      margin-bottom: 2rem;
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
     }
 
     .btn {
@@ -96,68 +78,33 @@
       cursor: pointer;
       text-decoration: none;
       transition: background-color 0.3s ease, transform 0.2s ease;
-      user-select: none;
-      display: inline-block;
     }
 
-    .btn:hover,
-    .btn:focus {
+    .btn:hover {
       background-color: var(--btn-hover-bg);
       transform: scale(1.05);
-      outline: none;
     }
 
     section {
       padding: 4rem 2rem;
       max-width: 1000px;
       margin: auto;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease;
     }
 
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      text-align: center;
     }
 
-   .services {
-  padding: 2rem;
-  text-align: center;
-}
-
-.services h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-  justify-items: center;
-}
-
-.service-pill {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f2ddc6;
-  color: #333;
-  padding: 1.2rem 1.6rem;
-  border-radius: 999px;
-  font-weight: 500;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-  min-height: 70px;
-  text-align: center;
-  cursor: default;
-}
-
-.service-pill:hover {
-  background-color: #e5cba8;
-  transform: scale(1.05);
-}
+    .service-pill {
+      background-color: #f2ddc6;
+      color: #333;
+      padding: 1rem;
+      border-radius: 999px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
 
     .portfolio-items {
       display: grid;
@@ -171,354 +118,200 @@
       padding: 1rem;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: box-shadow 0.3s ease;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .project:hover {
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
 
     .project img {
       width: 100%;
       border-radius: 8px;
-      margin-bottom: 0.5rem;
+    }
+
+    .code-form {
+      max-width: 600px;
+      margin: 4rem auto;
+      background-color: #1e1e1e;
+      color: #d4d4d4;
+      border-radius: 10px;
+      font-family: 'Courier New', monospace;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    .code-header {
+      background-color: #2d2d2d;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+    }
+
+    .dot { width: 12px; height: 12px; border-radius: 50%; margin-right: 0.5rem; }
+    .red { background-color: #ff5f56; }
+    .yellow { background-color: #ffbd2e; }
+    .green { background-color: #27c93f; }
+    .filename { margin-left: auto; color: #ccc; font-size: 0.9rem; }
+
+    .code-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1.5rem;
+    }
+
+    .code-content label {
+      font-weight: bold;
+      color: #9cdcfe;
+    }
+
+    .code-content input,
+    .code-content textarea {
+      background-color: #1e1e1e;
+      border: 1px solid #444;
+      color: #d4d4d4;
+      padding: 0.7rem 1rem;
+      border-radius: 5px;
+    }
+
+    .code-content button {
+      background-color: #007acc;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .code-content button:hover {
+      background-color: #005fa3;
     }
 
     footer.contact {
       text-align: center;
       padding: 3rem 2rem;
       background-color: #e2cdb3;
-      color: var(--accent-color);
-      user-select: none;
     }
 
-    footer.contact a {
-      color: var(--accent-color);
+    #formStatus {
+      margin-top: 1rem;
       font-weight: bold;
-      text-decoration: underline;
     }
 
-    /* Тёмный футер */
-    [data-theme="dark"] footer.contact {
-      background-color: #2a2a2a;
-      color: var(--highlight);
-    }
-
-    /* Переключатель темы */
-    .theme-toggle {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: var(--btn-bg);
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      transition: background-color 0.3s ease;
-      user-select: none;
-      z-index: 999;
-    }
-
-    .theme-toggle:hover {
-      background: var(--btn-hover-bg);
-    }
-
-    .theme-toggle svg {
-      fill: #fff;
-      width: 22px;
-      height: 22px;
-    }
-
-    /* Форма обратной связи */
-    .code-form {
-  max-width: 600px;
-  margin: 4rem auto;
-  background-color: #1e1e1e;
-  color: #d4d4d4;
-  border-radius: 10px;
-  font-family: 'Courier New', monospace;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-}
-
-.code-header {
-  background-color: #2d2d2d;
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-}
-
-.code-header .dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin-right: 0.5rem;
-}
-
-.red { background-color: #ff5f56; }
-.yellow { background-color: #ffbd2e; }
-.green { background-color: #27c93f; }
-
-.filename {
-  margin-left: auto;
-  color: #ccc;
-  font-size: 0.9rem;
-}
-
-.code-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1.5rem;
-}
-
-.code-content label {
-  font-weight: bold;
-  color: #9cdcfe;
-}
-
-.code-content input,
-.code-content textarea {
-  background-color: #1e1e1e;
-  border: 1px solid #444;
-  color: #d4d4d4;
-  padding: 0.7rem 1rem;
-  border-radius: 5px;
-  font-family: inherit;
-  resize: none;
-}
-
-.code-content input:focus,
-.code-content textarea:focus {
-  border-color: #007acc;
-  outline: none;
-}
-
-.code-content button {
-  align-self: flex-start;
-  background-color: #007acc;
-  color: white;
-  border: none;
-  padding: 0.7rem 1.5rem;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.code-content button:hover {
-  background-color: #005fa3;
-}
-<script>
-  const TOKEN = '7551886319:AAESFEAVKeaXHqUgOSrVc2p4CBkjZmRacUI';
-  const CHAT_ID = 5362730618;
-  const API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
-
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const name = document.getElementById('name').value.trim();
-    const message = document.getElementById('message').value.trim();
-    const status = document.getElementById('formStatus');
-
-    if (!name || !message) {
-      status.textContent = "❌ Заполните все поля.";
-      return;
-    }
-
-    const text = `📩 Новая заявка с сайта:\n\n👤 Имя и TG: ${name}\n📝 Сообщение: ${message}`;
-
-    fetch(API, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: CHAT_ID,
-        text: text,
-        parse_mode: 'HTML'
-      })
-    })
-    .then(res => {
-      if (res.ok) {
-        status.textContent = "✅ Заявка отправлена!";
-        document.getElementById('contactForm').reset();
-      } else {
-        status.textContent = "❌ Ошибка при отправке.";
-      }
-    })
-    .catch(err => {
-      status.textContent = "⚠️ Ошибка: " + err.message;
-    });
-  });
-</script>
-
-
-    /* Ошибка валидации */
     .error {
       border-color: #e74c3c !important;
-    }
-
-    /* Адаптив */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      header p {
-        font-size: 1rem;
-      }
-      .services ul {
-        grid-template-columns: 1fr;
-      }
-      .portfolio-items {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
 <body>
-  <div class="theme-toggle" id="themeToggle" title="Переключить тему">
-    <!-- Иконка Солнца/Луны -->
-    <svg id="themeIcon" viewBox="0 0 24 24">
-      <path d="M12 3v1M16.24 4.76l-.7.7M21 12h-1M16.24 19.24l-.7-.7M12 21v-1M7.76 19.24l.7-.7M3 12h1M7.76 4.76l.7.7M12 7a5 5 0 100 10 5 5 0 000-10z"></path>
-    </svg>
-  </div>
 
   <header>
     <div class="logo">CHICHA</div>
     <h1>Привет, я Кирилл</h1>
     <p>Твои идеи — мои решения: сайты и мини-приложения, которые делают бизнес проще</p>
-    <a class="btn" href="https://t.me/yourtelegram" target="_blank" rel="noopener noreferrer">Связаться в Telegram</a>
+    <a class="btn" href="https://t.me/yourtelegram" target="_blank">Связаться в Telegram</a>
   </header>
 
-<section class="services">
-  <h2>Что я делаю</h2>
-  <div class="services-grid">
-    <div class="service-pill">Приложения в телеграмм "mini app"</div>
-    <div class="service-pill">Сайты визитки</div>
-    <div class="service-pill">Приложения о продукте-курсе</div>
-    <div class="service-pill">Доработка или переделаю приложения</div>
-  </div>
-</section>
+  <section class="services">
+    <h2>Что я делаю</h2>
+    <div class="services-grid">
+      <div class="service-pill">Приложения в Telegram "mini app"</div>
+      <div class="service-pill">Сайты визитки</div>
+      <div class="service-pill">Приложения о продукте-курсе</div>
+      <div class="service-pill">Доработка или переделаю приложения</div>
+    </div>
+  </section>
 
   <section class="portfolio">
     <h2>Примеры работ</h2>
     <div class="portfolio-items">
-      <div class="project" tabindex="0" aria-label="Telegram-приложение для онлайн-записи">
-        <img src="https://via.placeholder.com/400x200" alt="Telegram-приложение для онлайн-записи" />
+      <div class="project">
+        <img src="https://via.placeholder.com/400x200" alt="Проект 1">
         <p>Telegram-приложение для онлайн-записи</p>
       </div>
-      <div class="project" tabindex="0" aria-label="Лендинг для курса по SMM">
-        <img src="https://via.placeholder.com/400x200" alt="Лендинг для курса по SMM" />
+      <div class="project">
+        <img src="https://via.placeholder.com/400x200" alt="Проект 2">
         <p>Лендинг для курса по SMM</p>
       </div>
-      <div class="project" tabindex="0" aria-label="Сайт-визитка для эксперта">
-        <img src="https://via.placeholder.com/400x200" alt="Сайт-визитка для эксперта" />
+      <div class="project">
+        <img src="https://via.placeholder.com/400x200" alt="Проект 3">
         <p>Сайт-визитка для эксперта</p>
       </div>
-      <div class="project" tabindex="0" aria-label="Мини-бот для подбора тарифа">
-        <img src="https://via.placeholder.com/400x200" alt="Мини-бот для подбора тарифа" />
+      <div class="project">
+        <img src="https://via.placeholder.com/400x200" alt="Проект 4">
         <p>Мини-бот для подбора тарифа</p>
       </div>
     </div>
   </section>
-<section class="code-form">
-  <div class="code-header">
-    <span class="dot red"></span>
-    <span class="dot yellow"></span>
-    <span class="dot green"></span>
-    <span class="filename">contact.js</span>
-  </div>
- <form id="contactForm" class="code-content" novalidate>
-  <label for="name">Имя и telegramm id</label>
-  <input type="text" id="name" name="name" placeholder="Как к вам обращаться и ваш tg id" required />
 
-  <label for="message">Сообщение</label>
-  <textarea id="message" name="message" rows="5" placeholder="Опишите задачу" required></textarea>
+  <section class="code-form">
+    <div class="code-header">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+      <span class="filename">contact.js</span>
+    </div>
+    <form id="contactForm" class="code-content" novalidate>
+      <label for="name">Имя и telegram id</label>
+      <input type="text" id="name" name="name" placeholder="Как к вам обращаться и ваш TG ID" required />
 
-  <button type="submit">Отправить</button>
-</form>
-<div id="formStatus" style="margin-top: 1rem; color: #00ff99;"></div>
-</section>
+      <label for="message">Сообщение</label>
+      <textarea id="message" name="message" rows="5" placeholder="Опишите задачу" required></textarea>
 
-
+      <button type="submit">Отправить</button>
+      <div id="formStatus"></div>
+    </form>
+  </section>
 
   <footer class="contact">
-    <p>Готов выполнить работу — <a href="https://t.me/yourtelegram" target="_blank" rel="noopener noreferrer">написать в Telegram</a></p>
+    <p>Готов выполнить работу — <a href="https://t.me/yourtelegram" target="_blank">написать в Telegram</a></p>
   </footer>
 
+  <!-- Telegram отправка -->
   <script>
-    // Плавное появление секций
-    const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) {
-          entry.target.classList.add('visible');
+    const TOKEN = '7551886319:AAESFEAVKeaXHqUgOSrVc2p4CBkjZmRacUI';
+    const CHAT_ID = 5362730618;
+    const API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contactForm');
+      const status = document.getElementById('formStatus');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (!name || !message) {
+          status.textContent = "❌ Заполните все поля.";
+          status.style.color = "red";
+          return;
         }
+
+        const text = `📩 Новая заявка с сайта:\n\n👤 Имя и TG: ${name}\n📝 Сообщение: ${message}`;
+
+        fetch(API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: text,
+            parse_mode: 'HTML'
+          })
+        })
+          .then(res => {
+            if (res.ok) {
+              status.textContent = "✅ Заявка отправлена!";
+              status.style.color = "#00ff99";
+              form.reset();
+            } else {
+              status.textContent = "❌ Ошибка при отправке.";
+              status.style.color = "red";
+            }
+          })
+          .catch(err => {
+            status.textContent = "⚠️ Ошибка: " + err.message;
+            status.style.color = "orange";
+          });
       });
-    }, {threshold: 0.1});
-    sections.forEach(section => observer.observe(section));
-
-    // Тема (сохранение в localStorage)
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = document.getElementById('themeIcon');
-
-    function setTheme(theme) {
-      if(theme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        // Луна иконка
-        themeIcon.innerHTML = '<path d=\"M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z\"></path>';
-      } else {
-        document.documentElement.removeAttribute('data-theme');
-        // Солнце иконка
-        themeIcon.innerHTML = '<path d=\"M12 3v1M16.24 4.76l-.7.7M21 12h-1M16.24 19.24l-.7-.7M12 21v-1M7.76 19.24l.7-.7M3 12h1M7.76 4.76l.7.7M12 7a5 5 0 100 10 5 5 0 000-10z\"></path>';
-      }
-      localStorage.setItem('theme', theme);
-    }
-
-    // Инициализация темы
-    let savedTheme = localStorage.getItem('theme');
-    if(savedTheme === 'dark') {
-      setTheme('dark');
-    }
-
-    themeToggle.addEventListener('click', () => {
-      let currentTheme = document.documentElement.getAttribute('data-theme');
-      if(currentTheme === 'dark') {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
-    });
-
-    // Валидация формы
-    const form = document.getElementById('contactForm');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-
-      const nameInput = form.elements['name'];
-      const messageInput = form.elements['message'];
-      let valid = true;
-
-      [nameInput, messageInput].forEach(input => {
-        if(!input.value.trim()) {
-          input.classList.add('error');
-          valid = false;
-        } else {
-          input.classList.remove('error');
-        }
-      });
-
-      if(valid) {
-        alert('Спасибо за сообщение! Я скоро свяжусь с вами.');
-        form.reset();
-      } else {
-        alert('Пожалуйста, заполните все поля.');
-      }
     });
   </script>
 </body>
