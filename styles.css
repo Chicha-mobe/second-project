@@ -148,7 +148,7 @@ section.visible {
   text-align: center;
   cursor: default;
   flex: 0 0 auto;
-  scroll-snap-align: start;
+  
 }
 
 .service-pill:hover {
