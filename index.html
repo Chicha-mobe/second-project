@@ -453,33 +453,7 @@
       }
     });
 
-    // Валидация формы
-    const form = document.getElementById('contactForm');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-
-      const nameInput = form.elements['name'];
-      const messageInput = form.elements['message'];
-      let valid = true;
-
-      [nameInput, messageInput].forEach(input => {
-        if(!input.value.trim()) {
-          input.classList.add('error');
-          valid = false;
-        } else {
-          input.classList.remove('error');
-        }
-      });
-
-      if(valid) {
-        alert('Спасибо за сообщение! Я скоро свяжусь с вами.');
-        form.reset();
-      } else {
-        alert('Пожалуйста, заполните все поля.');
-      }
-    });
-  </script>
-
+    
   <!-- Скрипт отправки формы в Telegram -->
   <script>
     const TOKEN = '7551886319:AAESFEAVKeaXHqUgOSrVc2p4CBkjZmRacUI';
